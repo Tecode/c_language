@@ -5,6 +5,6 @@
 #include "stdio.h"
 
 int main() {
-    printf("s%","ok");
+    printf("Hello World!");
     return 0;
 }
