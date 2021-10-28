@@ -5,6 +5,10 @@
 #include "stdio.h"
 
 int main() {
-    printf("Hello World!");
+    for (int row = 1; row <= 9; ++row) {
+        for (int col = 1; col <= row; ++col) {
+            printf("%d * %d = %d \n", col, row, col * row);
+        }
+    }
     return 0;
 }
