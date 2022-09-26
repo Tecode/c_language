@@ -10,7 +10,7 @@ int cube(const int value) {
 
 int main() {
     int number, value1, value2, value3, count = 0;
-    printf("ÇëÊäÈëÒ»¸ö3Î»Êı£º\n");
+    printf("è¯·è¾“å…¥ä¸€ä¸ª3ä½æ•°ï¼š\n");
     scanf("%d",&number);
     for (int i = 100; i <= number; ++i) {
         value1 = i / 100;
@@ -18,20 +18,20 @@ int main() {
         value3 = i % 10;
         int sum = cube(value1) + cube(value2) + cube(value3);
         if (sum == i) {
-            printf("Ë®ÏÉ»¨Êı£º%d \n", i);
+            printf("æ°´ä»™èŠ±æ•°ï¼š%d \n", i);
             count ++;
             continue;
         }
     }
-    printf("Ë®ÏÉ»¨ÊıÒ»¹²ÓĞ %d ¸ö\n", count);
+    printf("æ°´ä»™èŠ±æ•°ä¸€å…±æœ‰ %d ä¸ª\n", count);
     return 0;
 }
 
 
 
 //888
-//Ë®ÏÉ»¨Êı£º153
-//Ë®ÏÉ»¨Êı£º370
-//Ë®ÏÉ»¨Êı£º371
-//Ë®ÏÉ»¨Êı£º407
-//Ë®ÏÉ»¨ÊıÒ»¹²ÓĞ 4 ¸ö
+//æ°´ä»™èŠ±æ•°ï¼š153
+//æ°´ä»™èŠ±æ•°ï¼š370
+//æ°´ä»™èŠ±æ•°ï¼š371
+//æ°´ä»™èŠ±æ•°ï¼š407
+//æ°´ä»™èŠ±æ•°ä¸€å…±æœ‰ 4 ä¸ª
