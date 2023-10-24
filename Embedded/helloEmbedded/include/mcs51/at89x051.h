@@ -1,5 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   at89x051.h - Register Declarations for Atmel AT89C1051, AT89C2051 and AT89C4051 Processors
+   based on 8051.h (8051.h must be in mcs51 subdirectory)
+   KEIL C compatible definitions are included
 
    Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
 
@@ -26,49 +28,40 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef AT89Cx051_H
+#define AT89Cx051_H
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#include <8051.h>     /* load difinitions for the 8051 core */
 
 #ifdef REG8051_H
 #undef REG8051_H
 #endif
 
-/* define 8052 specific registers only */
+/* remove non existing registers */
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+#ifdef P0				  /* P0 is defined in <8051.h> */
+#undef P0				  /* AT89Cx051 has no P0 */
+#undef P0_0				  /* undefine bit addressable registers in P0 */
+#undef P0_1
+#undef P0_2
+#undef P0_3
+#undef P0_4
+#undef P0_5
+#undef P0_6
+#undef P0_7
+#endif
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
-
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+#ifdef P2				  /* P2 is defined in <8051.h> */
+#undef P2				  /* AT89Cx051 has no P2 */
+#undef P2_0				  /* undefine bit addressable registers in P2 */
+#undef P2_1
+#undef P2_2
+#undef P2_3
+#undef P2_4
+#undef P2_5
+#undef P2_6
+#undef P2_7
+#endif
 
 #endif
+

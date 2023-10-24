@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   features.h - DS390/DS400 specific features.
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2004, Maarten Brock, sourceforge.brock@dse.nl
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +26,49 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __SDC51_ASM_DS390_FEATURES_H
+#define __SDC51_ASM_DS390_FEATURES_H   1
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#define _REENTRANT	__reentrant
+#define _CODE		__code
 
-#ifdef REG8051_H
-#undef REG8051_H
+/* define _AUTOMEM to indicate the default storage class for
+   automatic variables. To be used with pointers to automatic variables.
+   Cannot be used in reentrant declared functions!
+
+   void foo(void)
+   {
+     char Ar[10];
+     char _AUTOMEM * pAr = Ar;
+   }
+*/
+#if defined(__SDCC_STACK_AUTO)
+  #if defined(__SDCC_USE_XSTACK)
+    #define _AUTOMEM __pdata
+  #elif defined(__SDCC_STACK_TENBIT)
+    #define _AUTOMEM __xdata
+  #else
+    #define _AUTOMEM __idata
+  #endif
+#elif defined(__SDCC_MODEL_SMALL)
+  #define _AUTOMEM __data
+#else
+  #define _AUTOMEM __xdata
 #endif
 
-/* define 8052 specific registers only */
+/* define _STATMEM to indicate the default storage class for
+   global/static variables. To be used with pointers to static variables.
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
-
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
-
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+   char Ar[10];
+   void foo(void)
+   {
+     char _STATMEM * pAr = Ar;
+   }
+*/
+#if defined(__SDCC_MODEL_SMALL)
+  #define _STATMEM __data
+#else
+  #define _STATMEM __xdata
+#endif
 
 #endif

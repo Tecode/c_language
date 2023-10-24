@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   limits.h - ANSI defines constants for sizes of integral types
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 1999, Sandeep Dutta . sandeep.dutta@usa.net
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +26,44 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __SDC51_LIMITS_H
+#define __SDC51_LIMITS_H 1
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#define CHAR_BIT    8    /* bits in a char */
+#define SCHAR_MAX   127
+#define SCHAR_MIN  -128
+#define UCHAR_MAX   0xff
 
-#ifdef REG8051_H
-#undef REG8051_H
+#ifdef __SDCC_CHAR_UNSIGNED
+#define CHAR_MAX    UCHAR_MAX
+#define CHAR_MIN    0
+#else
+#define CHAR_MAX    SCHAR_MAX
+#define CHAR_MIN    SCHAR_MIN
 #endif
 
-/* define 8052 specific registers only */
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199409L
+#define MB_LEN_MAX  4
+#endif
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+#define INT_MIN     (-32767 - 1)
+#define INT_MAX     32767
+#define SHRT_MAX    INT_MAX
+#define SHRT_MIN    INT_MIN
+#define UINT_MAX    0xffff
+#define UINT_MIN    0
+#define USHRT_MAX   UINT_MAX
+#define USHRT_MIN   UINT_MIN
+#define LONG_MIN    (-2147483647L-1)
+#define LONG_MAX    2147483647L
+#define ULONG_MAX   0xffffffff
+#define ULONG_MIN   0
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
-
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+#define LLONG_MIN   (-9223372036854775807LL-1)
+#define LLONG_MAX   9223372036854775807LL
+#define ULLONG_MAX  18446744073709551615ULL
+#endif
 
 #endif
+

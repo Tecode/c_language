@@ -1,4 +1,4 @@
-#include "../include/mcs51/8051.h"
+#include "../include/mcs51/8052.h"
 #include "../include/caculater.h"
 
 int main() {

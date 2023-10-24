@@ -1,7 +1,8 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   stddef.h - ANSI functions forward declarations
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2004, Maarten Brock / sourceforge.brock@dse.nl
+   Copyright (C) 2011, Philipp Klaus Krause / pkk@spth.de
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +27,52 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __SDCC_STDDEF_H
+#define __SDCC_STDDEF_H 1
 
-#include <8051.h>     /* load definitions for the 8051 core */
-
-#ifdef REG8051_H
-#undef REG8051_H
+#ifndef NULL
+  #define NULL (void *)0
 #endif
 
-/* define 8052 specific registers only */
+#ifndef __PTRDIFF_T_DEFINED
+#define __PTRDIFF_T_DEFINED
+#if defined (__SDCC_mcs51) || defined (__SDCC_ds390)
+  typedef long int ptrdiff_t;
+#else
+  typedef int ptrdiff_t; // 16 bit ptrdiff_t is in violation of the ISO C99, C11, C17 standards, but complies with C90 and C23.
+#endif
+#endif
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+#ifndef __SIZE_T_DEFINED
+#define __SIZE_T_DEFINED
+  typedef unsigned int size_t;
+#endif
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+#if __STDC_VERSION__ >= 201112L
+  typedef unsigned char max_align_t;
+#endif
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
+#ifndef __WCHAR_T_DEFINED
+#define __WCHAR_T_DEFINED
+  typedef unsigned long int wchar_t;
+#endif
 
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
+/* Bounds-checking interfaces from annex K of the C11 standard. */
+#if defined (__STDC_WANT_LIB_EXT1__) && __STDC_WANT_LIB_EXT1__
 
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
+#ifndef __RSIZE_T_DEFINED
+#define __RSIZE_T_DEFINED
+typedef size_t rsize_t;
+#endif
 
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+#ifndef __ERRNO_T_DEFINED
+#define __ERRNO_T_DEFINED
+typedef int errno_t;
+#endif
 
 #endif
+
+#define offsetof(s, m) __builtin_offsetof (s, m)
+
+#endif
+

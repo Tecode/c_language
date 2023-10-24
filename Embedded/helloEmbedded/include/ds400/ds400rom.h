@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   ds400rom.h - Interface to DS80C400 ROM functions
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2000, Kevin Vigor
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +26,36 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef DS400ROM_H_
+#define DS400ROM_H_
 
-#include <8051.h>     /* load definitions for the 8051 core */
+extern unsigned char init_rom(void __xdata *loMem,
+			      void __xdata *hiMem) __naked;
 
-#ifdef REG8051_H
-#undef REG8051_H
-#endif
+extern unsigned long task_gettimemillis_long(void) __naked;
 
-/* define 8052 specific registers only */
+extern unsigned char task_getthreadID(void) __naked;
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+/** Timer reload value for 14.746 MHz crystal. */
+#define RELOAD_14_746 0xfb33
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+/** Timer reload value for 18.432 MHz crystal. */
+#define RELOAD_18_432 0xfa00
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
+/** Timer reload value for 29.491 MHz crystal. */
+#define RELOAD_29_491 0xfd99
 
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
+/** Timer reload value for 36.864 MHz crystal. */
+#define RELOAD_36_864 0xfd00
 
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
+/** Timer reload value for 58.982 MHz crystal. */
+#define RELOAD_58_982 0xfecc
 
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+/** Timer reload value for 73.728 MHz crystal. */
+#define RELOAD_73_728 0xfe80
+
+extern unsigned int task_gettickreload(void);
+
+extern void task_settickreload(unsigned);
 
 #endif

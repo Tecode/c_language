@@ -1,7 +1,8 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   msm8xc154s.h - Register Declarations for the Oki MSM80C154S and
+   MSM83C154S
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2005,  Matthias Arndt / marndt@asmsoftware.de
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +27,32 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef MSM8xC154S_H
+#define MSM8xC154S_H
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#include <8052.h>     /* load definitions for the 8052 core */
 
-#ifdef REG8051_H
-#undef REG8051_H
+#ifdef REG8052_H
+#undef REG8052_H
 #endif
 
-/* define 8052 specific registers only */
+/* byte SFRs */
+__sfr __at (0xf8) 	IOCON;	/* IOCON register */
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+/* bit locations */
+__sbit __at (0xf8)	ALF;	/* floating status on power down control */
+__sbit __at (0xf9)	P1HZ;	/* P1 high impedance input control */
+__sbit __at (0xfa)	P2HZ;	/* P2 high impedance input control */
+__sbit __at (0xfb)	P3HZ;	/* P3 high impedance input control */
+__sbit __at (0xfc)	IZC;	/* 10kO pull-up resistor control */
+__sbit __at (0xfd)	SERR;	/* Serial port reception flag */
+__sbit __at (0xfe)	T32;	/* interconnect T0 and T1 to 32bit timer/counter */
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+/* Bits in IP (0xb8) */
+__sbit __at (0xbf)	PCT;	/* Priority interrupt circuit control bit */
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+/* Bits in PCON (0x87) */
+#define RPD 0x20            /* Bit used to specify cancellation of CPU power down mode */
+#define HPD 0x40            /* The hard power down setting mode is enabled when this bit is set to "1". */
 
 #endif

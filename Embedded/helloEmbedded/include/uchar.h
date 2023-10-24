@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   uchar.h: Unicode utilities  (ISO C 11 7.28)
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2015-2016, Philipp Klaus Krause, pkk@spth.de
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -13,7 +13,7 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
    GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License 
+   You should have received a copy of the GNU General Public License
    along with this library; see the file COPYING. If not, write to the
    Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
    MA 02110-1301, USA.
@@ -26,49 +26,36 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __SDCC_UCHAR_H
+#define __SDCC_UCHAR_H 1
 
-#include <8051.h>     /* load definitions for the 8051 core */
-
-#ifdef REG8051_H
-#undef REG8051_H
+#ifndef __MBSTATE_T_DEFINED
+#define __MBSTATE_T_DEFINED
+  typedef struct {unsigned char c[3];} mbstate_t;
 #endif
 
-/* define 8052 specific registers only */
+#ifndef __SIZE_T_DEFINED
+#define __SIZE_T_DEFINED
+  typedef unsigned int size_t;
+#endif
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+#ifndef __CHAR16_T_DEFINED
+#define __CHAR16_T_DEFINED
+  typedef unsigned int char16_t;
+#endif
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+#ifndef __CHAR32_T_DEFINED
+#define __CHAR32_T_DEFINED
+  typedef unsigned long int char32_t;
+#endif
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
+size_t mbrtoc16(char16_t *restrict pc16, const char *restrict s, size_t n, mbstate_t *restrict ps);
+size_t c16rtomb(char *restrict s, char16_t c16, mbstate_t *restrict ps);
+size_t mbrtoc32(char32_t *restrict pc32, const char *restrict s, size_t n, mbstate_t *restrict ps);
+size_t c32rtomb(char *restrict s, char32_t c32, mbstate_t *restrict ps);
 
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+size_t __mbstoc16s(char16_t *restrict c16s, const char *restrict s, size_t n);
+size_t __c16stombs(char *restrict s, const char16_t *restrict c16s, size_t n);
 
 #endif
+

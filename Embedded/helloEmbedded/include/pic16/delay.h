@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   delay.h - delay functions header file
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2005, Vangelis Rokas <vrokas AT otenet.gr>
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +26,27 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __DELAY_H__
+#define __DELAY_H__
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#pragma library c
 
-#ifdef REG8051_H
-#undef REG8051_H
-#endif
-
-/* define 8052 specific registers only */
-
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
-
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
-
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+/*
+ * the delayNNtcy family of functions performs a
+ * delay of NN cycles. Possible values for NN are:
+ *   10  10*n cycles delay
+ *  100  100*n cycles delay
+ *   1k  1000*n cycles delay
+ *  10k  10000*n cycles delay
+ * 100k  100000*n cycles delay
+ *   1m  1000000*n cycles delay
+ */
+ 
+void delay10tcy(unsigned char) __wparam;
+void delay100tcy(unsigned char) __wparam;
+void delay1ktcy(unsigned char) __wparam;
+void delay10ktcy(unsigned char) __wparam;
+void delay100ktcy(unsigned char) __wparam;
+void delay1mtcy(unsigned char) __wparam;
 
 #endif

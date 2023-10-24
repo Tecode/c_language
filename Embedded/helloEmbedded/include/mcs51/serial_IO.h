@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   serial_IO.h - Default putchar() and getchar() to the serial port
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2006, Jesus Calvino-Fraga / jesusc at ece.ubc.ca
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +26,60 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef SERIAL_IO_H
+#define SERIAL_IO_H
 
-#include <8051.h>     /* load definitions for the 8051 core */
+__sfr __at (0x87) SIO_PCON;
+__sfr __at (0x89) SIO_TMOD;
+__sfr __at (0x8D) SIO_TH1;
+__sfr __at (0x8B) SIO_TL1;
+__sfr __at (0x98) SIO_SCON;
+__sfr __at (0x99) SIO_SBUF;
+__sbit __at (0x8E) SIO_TR1;
 
-#ifdef REG8051_H
-#undef REG8051_H
-#endif
+/*SCON bits*/
+__sbit __at (0x98) SIO_RI;
+__sbit __at (0x99) SIO_TI;
+__sbit __at (0x9A) SIO_RB8;
+__sbit __at (0x9B) SIO_TB8;
+__sbit __at (0x9C) SIO_REN;
+__sbit __at (0x9D) SIO_SM2;
+__sbit __at (0x9E) SIO_SM1;
+__sbit __at (0x9F) SIO_SM0;
 
-/* define 8052 specific registers only */
+void inituart (unsigned char t1_reload)
+{
+	SIO_TR1=0;
+	SIO_TMOD=(SIO_TMOD&0x0f)|0x20;
+	SIO_PCON|=0x80;
+	SIO_TH1=SIO_TL1=t1_reload;
+	SIO_TR1=1;
+	SIO_SCON=0x52;
+}
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+void putchar (char c)
+{
+	if((!SIO_SM0)&&(!SIO_SM1)) inituart(0xff);
+	if (c=='\n')
+	{
+		while (!SIO_TI);
+		SIO_TI=0;
+		SIO_SBUF='\r';
+	}
+	while (!SIO_TI);
+	SIO_TI=0;
+	SIO_SBUF=c;
+}
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+char getchar (void)
+{
+	char c;
+	
+	if((!SIO_SM0)&&(!SIO_SM1)) inituart(0xff);
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
-
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
-
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
-
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
-
+	while (!SIO_RI);
+	SIO_RI=0;
+	c=SIO_SBUF;
+	return c;
+}
 #endif

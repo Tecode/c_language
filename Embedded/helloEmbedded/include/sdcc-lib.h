@@ -1,7 +1,8 @@
 /*-------------------------------------------------------------------------
-   8052.h: Register Declarations for the Intel 8052 Processor
+   sdcc-lib.h - Top level header file for the sdcc libraries that enables
+                target specific features.
 
-   Copyright (C) 2000, Bela Torok / bela.torok@kssg.ch
+   Copyright (C) 2004, Maarten Brock, sourceforge.brock@dse.nl
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -26,49 +27,38 @@
    might be covered by the GNU General Public License.
 -------------------------------------------------------------------------*/
 
-#ifndef REG8052_H
-#define REG8052_H
+#ifndef __SDC51_SDCC_LIB_H
+#define __SDC51_SDCC_LIB_H	1
 
-#include <8051.h>     /* load definitions for the 8051 core */
+#if defined(__SDCC_z80) || defined(__SDCC_z180) || defined(__SDCC_ez80_z80) || defined(__SDCC_z80n)
+#include <asm/z80/features.h>
 
-#ifdef REG8051_H
-#undef REG8051_H
-#endif
+#elif defined(__SDCC_r2k) || defined(__SDCC_r2ka)
+#include <asm/r2k/features.h>
 
-/* define 8052 specific registers only */
+#elif defined(__SDCC_r3ka)
+#include <asm/r3ka/features.h>
 
-/* T2CON */
-__sfr __at (0xC8) T2CON ;
+#elif defined(__SDCC_tlcs90)
+#include <asm/tlcs90/features.h>
 
-/* RCAP2 L & H */
-__sfr __at (0xCA) RCAP2L  ;
-__sfr __at (0xCB) RCAP2H  ;
-__sfr __at (0xCC) TL2     ;
-__sfr __at (0xCD) TH2     ;
+#elif defined(__SDCC_sm83)
+#include <asm/sm83/features.h>
 
-/*  IE  */
-__sbit __at (0xAD) ET2    ; /* Enable timer2 interrupt */
+#elif defined(__SDCC_mcs51)
+#include <asm/mcs51/features.h>
 
-/*  IP  */
-__sbit __at (0xBD) PT2    ; /* T2 interrupt priority bit */
+#elif defined(__SDCC_ds390)
+#include <asm/ds390/features.h>
 
-/* T2CON bits */
-__sbit __at (0xC8) T2CON_0 ;
-__sbit __at (0xC9) T2CON_1 ;
-__sbit __at (0xCA) T2CON_2 ;
-__sbit __at (0xCB) T2CON_3 ;
-__sbit __at (0xCC) T2CON_4 ;
-__sbit __at (0xCD) T2CON_5 ;
-__sbit __at (0xCE) T2CON_6 ;
-__sbit __at (0xCF) T2CON_7 ;
+#elif defined(__SDCC_stm8)
+#include <asm/stm8/features.h>
 
-__sbit __at (0xC8) CP_RL2  ;
-__sbit __at (0xC9) C_T2    ;
-__sbit __at (0xCA) TR2     ;
-__sbit __at (0xCB) EXEN2   ;
-__sbit __at (0xCC) TCLK    ;
-__sbit __at (0xCD) RCLK    ;
-__sbit __at (0xCE) EXF2    ;
-__sbit __at (0xCF) TF2     ;
+#else
+/* PENDING */
+#include <asm/default/features.h>
 
 #endif
+
+#endif
+
