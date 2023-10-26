@@ -3,7 +3,7 @@
 
 int main() {
 // write your code here
-    P0 = 0xFE;
+    P2 = 0x00;
     while (1) {
         break;
     }
