@@ -1,5 +1,5 @@
-#include "../include/mcs51/8052.h"
-#include "../include/caculater.h"
+#include "mcs51/8052.h"
+#include "caculater.h"
 
 int main() {
 // write your code here
