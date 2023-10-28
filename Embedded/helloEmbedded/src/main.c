@@ -1,10 +1,10 @@
-#include "mcs51/8052.h"
-#include "caculater.h"
+#include "common.h"
+
 
 int main() {
 // write your code here
-    P2 = 0x00;
     while (1) {
+        blinkLight();
         break;
     }
     return 0;
