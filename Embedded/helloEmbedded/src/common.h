@@ -6,6 +6,7 @@
 
 void setTimeOut(unsigned int ms);
 void blinkLight();
+void waterLamps();
 
 #define HELLOEMBEDDED_COMMON_H
 

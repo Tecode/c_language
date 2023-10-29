@@ -4,7 +4,8 @@
 int main() {
 // write your code here
     while (1) {
-        blinkLight();
+//      blinkLight();
+        waterLamps();
         break;
     }
     return 0;
