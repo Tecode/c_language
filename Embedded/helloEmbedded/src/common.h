@@ -7,6 +7,10 @@
 void setTimeOut(unsigned int ms);
 void blinkLight();
 void waterLamps();
+void buttonControlLight01();
+void buttonControlLight02();
+void buttonControlLight03();
+
 
 #define HELLOEMBEDDED_COMMON_H
 
