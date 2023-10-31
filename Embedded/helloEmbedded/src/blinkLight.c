@@ -31,3 +31,74 @@ void waterLamps() {
     P2 = 0xFE;
     setTimeOut(1000);
 }
+
+// 按下灯亮，松开熄灭
+void buttonControlLight01() {
+    while (1) {
+        if (P3_1 == 0) {
+            P2_0 = 0;
+        }
+        if (P3_1 == 1) {
+            P2_0 = 1;
+        }
+    }
+}
+
+// 按下灯亮，再按下熄灭
+void buttonControlLight02() {
+    while (1) {
+        if (P3_1 == 0) {
+            setTimeOut(20);
+            while (P3_1 == 0);
+            setTimeOut(20);
+            P2_0 = 1 ^ P2_0;
+        }
+    }
+}
+
+// k0按一次灯亮一个，依次循环 k2关闭所有小灯 k3跑马灯
+void buttonControlLight03() {
+    unsigned char count = 0;
+    unsigned char loop = 0;
+    unsigned reduce = 0;
+    while (1) {
+        if (P3_1 == 0) {
+            setTimeOut(20);
+            while (P3_1 == 0);
+            setTimeOut(20);
+            P2 = P2 << 1;
+            loop = 0;
+        }
+        if (P3_0 == 0) {
+            setTimeOut(20);
+            while (P3_0 == 0);
+            setTimeOut(20);
+            P2 = 0xFF;
+            loop = 0;
+        }
+        // 跑马灯
+        if (P3_2 == 0) {
+            setTimeOut(20);
+            while (P3_2 == 0);
+            setTimeOut(20);
+            loop = 1;
+        }
+
+        if (loop) {
+            setTimeOut(500);
+            if (count == 6) {
+                reduce = 1;
+            }
+            if (count == 0) {
+                reduce = 0;
+            }
+            if (reduce) {
+                count--;
+                P2 = P2 >> 1;
+            } else {
+                count++;
+                P2 = P2 << 1;
+            }
+        }
+    }
+}

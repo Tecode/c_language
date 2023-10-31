@@ -3,10 +3,13 @@
 
 int main() {
 // write your code here
-    while (1) {
+//    while (1) {
 //      blinkLight();
-        waterLamps();
-        break;
-    }
+//      waterLamps();
+//        break;
+//    }
+//    buttonControlLight01();
+//    buttonControlLight02();
+    buttonControlLight03();
     return 0;
 }
