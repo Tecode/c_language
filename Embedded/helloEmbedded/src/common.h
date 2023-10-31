@@ -10,6 +10,7 @@ void waterLamps();
 void buttonControlLight01();
 void buttonControlLight02();
 void buttonControlLight03();
+void staticDisplay(unsigned char number);
 
 
 #define HELLOEMBEDDED_COMMON_H

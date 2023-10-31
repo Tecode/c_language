@@ -4,8 +4,15 @@
 
 #include "stdio.h"
 
+unsigned char *numberToBitList(unsigned char number) {
+    unsigned char bitList[3] = {0, 0, 0};
+    bitList[2] = (number - 1) % 2;
+    bitList[1] = (number - 2) % 2;
+    bitList[0] = (number - 4) / 2;
+    return bitList;
+}
+
 int main() {
-    int num = 0xF0 + 0x01;
-    printf("%x",num);
-    return 0;
+    unsigned char *ptr = numberToBitList(6);
+    printf("%d-%d-%d", ptr[0], ptr[1], ptr[2]);
 }
