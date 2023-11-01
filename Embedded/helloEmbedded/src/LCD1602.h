@@ -1,5 +1,5 @@
-#ifndef __LCD1602_H__
-#define __LCD1602_H__
+#ifndef HELLOEMBEDDED_LCD1602_H
+#define HELLOEMBEDDED_LCD1602_H
 
 //用户调用函数：
 void LCD_Init();

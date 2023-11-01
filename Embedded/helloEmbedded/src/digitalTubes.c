@@ -71,3 +71,28 @@ void staticDisplay(unsigned char number) {
             break;
     }
 }
+
+// 数字从1-8，1秒变一次
+void loopLight() {
+    for (unsigned char index = 1; index < 9; index++) {
+        setTimeOut(1000);
+        staticDisplay(index);
+    }
+}
+
+
+// 显示1234
+void numberLight() {
+    staticDisplay(1);
+    setTimeOut(1);
+    P0 = 0x00;
+    staticDisplay(2);
+    setTimeOut(1);
+    P0 = 0x00;
+    staticDisplay(3);
+    setTimeOut(1);
+    P0 = 0x00;
+    staticDisplay(4);
+    setTimeOut(1);
+    P0 = 0x00;
+}

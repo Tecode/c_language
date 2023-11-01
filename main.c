@@ -22,7 +22,5 @@ unsigned char *numberToBitList(unsigned char number) {
 }
 
 int main() {
-    unsigned char *ptr = numberToBitList(4);
-    unsigned char light[] = {0x30,0x5B,0x8F,0x66,0x6D,0xFD,0x07,0xFF};
-//    printf("%d-%d-%d \n", ptr[0], ptr[1], ptr[2]);
+    printf("%x", 0xA0^7);
 }

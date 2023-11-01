@@ -19,4 +19,8 @@ void buttonControlLight03();
 
 void staticDisplay(unsigned char number);
 
+void loopLight();
+
+void numberLight();
+
 #endif //HELLOEMBEDDED_COMMON_H

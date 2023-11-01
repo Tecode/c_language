@@ -1,4 +1,6 @@
-#include "common.h"
+//#include "common.h"
+//#include "mcs51/8052.h"
+#include "LCD1602.h"
 
 
 int main() {
@@ -11,10 +13,12 @@ int main() {
 //    buttonControlLight01();
 //    buttonControlLight02();
 //    buttonControlLight03();
-// 数字从1-8，1秒变一次
-    for (unsigned char index = 1; index < 9; index ++) {
-        setTimeOut(1000);
-        staticDisplay(index);
-    }
+//    loopLight();
+//    numberLight();
+    LCD_Init();
+//    LCD_ShowChar(1, 1, 'A');
+//    LCD_ShowString(1,1, "Hello world!");
+    LCD_ShowSignedNum(1,2,234,4);
     return 0;
+
 }

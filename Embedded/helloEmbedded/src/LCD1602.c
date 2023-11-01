@@ -1,11 +1,12 @@
 #include "mcs51/8052.h"
 
-//引脚配置：
-sbit LCD_RS = P2 ^ 6;
-sbit LCD_RW = P2 ^ 5;
-sbit LCD_EN = P2 ^ 7;
-#define LCD_DataPort P0
 
+//引脚配置：
+__sbit __at (0xA6) LCD_RS   ; //P2 ^ 6
+__sbit __at (0xA5) LCD_RW   ; //P2 ^ 5
+__sbit __at (0xA7) LCD_EN   ; //P2 ^ 7
+
+#define LCD_DataPort P0
 //函数定义：
 /**
   * @brief  LCD1602延时函数，12MHz调用可延时1ms
