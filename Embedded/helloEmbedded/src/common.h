@@ -3,16 +3,20 @@
 //
 
 #ifndef HELLOEMBEDDED_COMMON_H
+#define HELLOEMBEDDED_COMMON_H
 
 void setTimeOut(unsigned int ms);
+
 void blinkLight();
+
 void waterLamps();
+
 void buttonControlLight01();
+
 void buttonControlLight02();
+
 void buttonControlLight03();
+
 void staticDisplay(unsigned char number);
-
-
-#define HELLOEMBEDDED_COMMON_H
 
 #endif //HELLOEMBEDDED_COMMON_H
