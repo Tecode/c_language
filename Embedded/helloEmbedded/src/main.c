@@ -1,7 +1,5 @@
-//#include "common.h"
-//#include "mcs51/8052.h"
-#include "LCD1602.h"
-
+#include "common.h"
+#include "matrixButton.h"
 
 int main() {
 // write your code here
@@ -15,10 +13,6 @@ int main() {
 //    buttonControlLight03();
 //    loopLight();
 //    numberLight();
-    LCD_Init();
-//    LCD_ShowChar(1, 1, 'A');
-//    LCD_ShowString(1,1, "Hello world!");
-    LCD_ShowSignedNum(1,2,234,4);
+    matrixKeyDown();
     return 0;
-
 }
