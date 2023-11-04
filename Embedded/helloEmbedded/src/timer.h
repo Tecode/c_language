@@ -4,5 +4,5 @@
 
 #ifndef HELLOEMBEDDED_TIMER_H
 #define HELLOEMBEDDED_TIMER_H
-
+void runTimer();
 #endif //HELLOEMBEDDED_TIMER_H

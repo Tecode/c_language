@@ -1,5 +1,6 @@
 #include "common.h"
 #include "matrixButton.h"
+#include "timer.h"
 
 int main() {
 // write your code here
@@ -13,6 +14,7 @@ int main() {
 //    buttonControlLight03();
 //    loopLight();
 //    numberLight();
-    matrixKeyDown();
+//    matrixKeyDown();
+    runTimer();
     return 0;
 }
