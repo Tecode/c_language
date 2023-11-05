@@ -8,4 +8,5 @@ void Timer0_Init();
 void litLight(unsigned char index);
 void loopLight();
 void cycleLightUp();
+void alarmTimer();
 #endif //HELLOEMBEDDED_TIMER_H

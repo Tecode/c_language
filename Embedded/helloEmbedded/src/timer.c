@@ -4,13 +4,14 @@
 
 #include "timer.h"
 #include "mcs51/8052.h"
+#include "LCD1602.h"
 
 
 void Timer0_Init(void)        //1毫秒@11.0592MHz
 {
     TMOD &= 0xF0;            //设置定时器模式
     TMOD |= 0x01;            //设置定时器模式
-    TL0 = 0x18;                //设置定时初始值
+    TL0 = 0x66;                //设置定时初始值
     TH0 = 0xFC;                //设置定时初始值
     TF0 = 0;                //清除TF0标志
     TR0 = 1;                //定时器0开始计时
@@ -58,4 +59,27 @@ void cycleLightUp() {
     } else {
         loopIndex--;
     }
+}
+
+/**
+  * @brief  闹钟计时器显示 时：分：秒
+  * @retval 无
+  */
+void alarmTimer() {
+    static unsigned char init = 0;
+    if (!init) {
+        LCD_Init();
+    }
+    init = 1;
+    static unsigned int second = 0;
+    LCD_ShowString(1, 1, "Alarm Timer:");
+    LCD_ShowChar(2, 3, ':');
+    LCD_ShowChar(2, 6, ':');
+    //    时
+    LCD_ShowNum(2, 1, second / 3600, 2);
+    //    分
+    LCD_ShowNum(2, 4, second / 60, 2);
+    //    秒
+    LCD_ShowNum(2, 7, second % 60, 2);
+    second++;
 }
