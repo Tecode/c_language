@@ -14,21 +14,21 @@ void blinkLight() {
 
 // 流水灯（基于寄存器地址P2）
 void waterLamps() {
-    P2 = 0x7F;
+    P2 = 0x7F;              // 0111 1111 127
     setTimeOut(1000);
-    P2 = 0xBF;
+    P2 = 0xBF;              // 1011 1111 191
     setTimeOut(1000);
-    P2 = 0xDF;
+    P2 = 0xDF;              // 1101 1111 223
     setTimeOut(1000);
-    P2 = 0xEF;
+    P2 = 0xEF;              // 1110 1111 239
     setTimeOut(1000);
-    P2 = 0xF7;
+    P2 = 0xF7;              // 1111 0111 247
     setTimeOut(1000);
-    P2 = 0xFB;
+    P2 = 0xFB;              // 1111 1011 251
     setTimeOut(1000);
-    P2 = 0xFD;
+    P2 = 0xFD;              // 1111 1101 253
     setTimeOut(1000);
-    P2 = 0xFE;
+    P2 = 0xFE;              // 1111 1110 254
     setTimeOut(1000);
 }
 

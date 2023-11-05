@@ -18,26 +18,44 @@ void Timer0_Init(void)        //1毫秒@11.0592MHz
     ET0 = 1;
     EA = 1;
     PT0 = 0;
+    while (1) {}
 }
 
+/**
+  * @brief  流水灯（基于寄存器地址P2）使用定时器，指定亮灯位置
+  * @param  index 起始行位置，范围：1~8
+  * @retval 无
+  */
+void litLight(unsigned char index) {
+    // 0111 1111 127
+    // 1011 1111 191
+    // 1101 1111 223
+    // 1110 1111 239
+    // 1111 0111 247
+    // 1111 1011 251
+    // 1111 1101 253
+    // 1111 1110 254
+    // 1111 1111 255
+    P2 = 0xFF - (1 << (index - 1));
+}
 
-void runTimer() {
-    P2_3 = 0;
-    Timer0_Init();
-    while (1) {
-
+/**
+  * @brief  流水灯
+  * @retval 无
+  */
+void cycleLightUp() {
+    static unsigned char loopIndex = 1;
+    static unsigned char add = 1;
+    if (loopIndex == 8) {
+        add = 0;
     }
-}
-
-// 执行中断函数
-unsigned char timer0Count = 0;
-
-void Timer0_Routine()
-
-__interrupt 1 {
-//    timeCount ++;
-//    if (timeCount == 1000) {
-//        timeCount = 0;
-//    }
-P2_0 = 0;
+    if (loopIndex == 1) {
+        add = 1;
+    }
+    litLight(loopIndex);
+    if (add) {
+        loopIndex++;
+    } else {
+        loopIndex--;
+    }
 }

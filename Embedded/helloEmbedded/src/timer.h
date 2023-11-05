@@ -4,5 +4,8 @@
 
 #ifndef HELLOEMBEDDED_TIMER_H
 #define HELLOEMBEDDED_TIMER_H
-void runTimer();
+void Timer0_Init();
+void litLight(unsigned char index);
+void loopLight();
+void cycleLightUp();
 #endif //HELLOEMBEDDED_TIMER_H
