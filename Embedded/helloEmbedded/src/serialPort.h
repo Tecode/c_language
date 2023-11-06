@@ -1,0 +1,8 @@
+//
+// Created by 昊轩 on 2023/11/6.
+//
+
+#ifndef HELLOEMBEDDED_SERIALPORT_H
+#define HELLOEMBEDDED_SERIALPORT_H
+
+#endif //HELLOEMBEDDED_SERIALPORT_H
