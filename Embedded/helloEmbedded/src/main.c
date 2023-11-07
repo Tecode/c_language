@@ -4,6 +4,7 @@
 #include "mcs51/8052.h"
 #include "LCD1602.h"
 #include "Uart.h"
+#include "MatrixLED.h"
 
 
 // 执行定时器中断函数，需要在main中才可以被執行
@@ -47,6 +48,7 @@ int main() {
 //  定时器初始化
 //    Timer0_Init();
 //  初始化串口1
-    UartInit();
+//    UartInit();
+    Init74HC595();
     return 0;
 }
