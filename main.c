@@ -22,5 +22,10 @@ unsigned char *numberToBitList(unsigned char number) {
 }
 
 int main() {
-    printf("%x", 0xA0^7);
+    printf("%X \n", (unsigned char )~0xF0);
+    printf("Size of int: %zu bytes\n", sizeof(int));
+    printf("Size of char: %zu bytes\n", sizeof(char));
+    printf("Size of short: %zu bytes\n", sizeof(short));
+    printf("Size of long: %zu bytes\n", sizeof(long));
+    return 0;
 }
