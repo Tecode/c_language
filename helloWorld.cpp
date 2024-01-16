@@ -5,7 +5,13 @@
 
 using namespace std;
 
+#define month 11
+
 int main() {
-    std::cout << "hello world" << endl;
+    bool isVal = true;
+    const int year = 2024;
+    string name = "haoxuan";
+    std::cout << "hello world" << year  << month << name << "\n" << endl;
+    std::cout << isVal << endl;
     return 0;
 };

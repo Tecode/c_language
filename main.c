@@ -7,7 +7,7 @@
 
 unsigned char *numberToBitList(unsigned char number) {
     unsigned char *bitList = malloc(sizeof(unsigned char) * 3);
-    unsigned char binary[3] = {0,0,0};
+    unsigned char binary[3] = {0, 0, 0};
     unsigned char i = 0;
     while (number > 0) {
         binary[i] = number & 1;
@@ -22,7 +22,10 @@ unsigned char *numberToBitList(unsigned char number) {
 }
 
 int main() {
-    printf("%X \n", (unsigned char )~0xF0);
+// C语言字符串
+    char str[] = "List String";
+    printf("%s \n", str[0]);
+    printf("%X \n", (unsigned char) ~0xF0);
     printf("Size of int: %zu bytes\n", sizeof(int));
     printf("Size of char: %zu bytes\n", sizeof(char));
     printf("Size of short: %zu bytes\n", sizeof(short));
