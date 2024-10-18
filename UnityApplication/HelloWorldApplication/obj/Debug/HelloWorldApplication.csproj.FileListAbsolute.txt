@@ -1,0 +1,12 @@
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/bin/Debug/HelloWorldApplication.exe
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/bin/Debug/HelloWorldApplication.pdb
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/obj/Debug/HelloWorldApplication.csproj.AssemblyReference.cache
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/obj/Debug/HelloWorldApplication.csproj.CoreCompileInputs.cache
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/obj/Debug/HelloWorldApplication.exe
+/Users/haoxuan/Work/c_language/unity/HelloWorldApplication/obj/Debug/HelloWorldApplication.pdb
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/bin/Debug/HelloWorldApplication.exe
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/bin/Debug/HelloWorldApplication.pdb
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/obj/Debug/HelloWorldApplication.csproj.AssemblyReference.cache
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/obj/Debug/HelloWorldApplication.csproj.CoreCompileInputs.cache
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/obj/Debug/HelloWorldApplication.exe
+/Users/haoxuan/Work/c_language/UnityApplication/HelloWorldApplication/obj/Debug/HelloWorldApplication.pdb
