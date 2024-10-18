@@ -2,15 +2,22 @@
 
 namespace HelloWorldApplication
 {
-    internal class Application
+    internal abstract class Application
     {
         public static void Main(string[] args)
         {
-            for (int index = 0; index < 10; index++)
+            const float hp = 100F;
+            var family = new Family();
+            for (var index = 0; index < 10; index++)
             {
-                Console.WriteLine("Hello World haoxuan {0}", index);
+                if (index == 5) 
+                {
+                    break;
+                }
+                Console.WriteLine("Hello World haoxuan {0} {1}", index, hp);
             }
-            Console.ReadKey();
+            family.Say();
+            // Console.ReadKey();
         }
     }
 }
