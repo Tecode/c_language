@@ -8,7 +8,7 @@ namespace FunctionApplication // Note: actual namespace depends on the project n
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World Application!");
+            Console.WriteLine("Hello World Application 02!");
         }
     }
 }
