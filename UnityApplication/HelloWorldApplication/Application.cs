@@ -23,6 +23,7 @@ namespace HelloWorldApplication
             var array = new[] { 2, 32, 45 };
             var sum = TotalCount(new[] { 1, 2, 4 });
             var total = ArrayParam(1, 2, 3, 4);
+            AnonymousFunction.Run();
             Console.WriteLine("总和：{0} {1} {2}", sum, array.Length, total);
             const float hp = 100F;
             var family = new Family();
@@ -33,11 +34,12 @@ namespace HelloWorldApplication
                     break;
                 }
 
-                Console.WriteLine("Hello World haoxuan {0} {1}", index, hp);
+                Console.WriteLine("Hello World jie jie {0} {1}", index, hp);
             }
 
             family.Say();
-            // Console.ReadKey();
+            family.SayName();
+            family.ReadBook();
         }
     }
 }
