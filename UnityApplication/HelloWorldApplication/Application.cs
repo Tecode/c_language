@@ -27,6 +27,7 @@ namespace HelloWorldApplication
             Console.WriteLine("总和：{0} {1} {2}", sum, array.Length, total);
             const float hp = 100F;
             var family = new Family();
+            var application = new SealedFunction();
             for (var index = 0; index < 10; index++)
             {
                 if (index == 5)
@@ -40,6 +41,7 @@ namespace HelloWorldApplication
             family.Say();
             family.SayName();
             family.ReadBook();
+            application.RunLog();
         }
     }
 }
