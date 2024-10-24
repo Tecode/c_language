@@ -67,6 +67,19 @@ namespace HelloWorldApplication
             var reg = new Regex(@"\d+");
             var isMatch = reg.IsMatch("5");
             Console.WriteLine("正则表达式：{0}", isMatch);
+            
+            // 系统自定义委托
+            Action<int, int> action = (a, b) => Console.WriteLine(a + b);
+            action += (a, b) => Console.WriteLine(a - b);
+            // 多播委托
+            action(1, 2);
+            Func<int, int> func = (a) => a * 2;
+            func(3);
+            func = (a) => a * 4;
+            func(4);
+            
+            // 多播委托
+            
 
             family.Say();
             family.SayName();
