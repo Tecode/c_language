@@ -28,6 +28,7 @@ namespace HelloWorldApplication
             const float hp = 100F;
             var family = new Family();
             var application = new SealedFunction();
+            var derivedApplication = new DerivedApplication();
             for (var index = 0; index < 10; index++)
             {
                 if (index == 5)
