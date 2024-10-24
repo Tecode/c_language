@@ -45,6 +45,7 @@
         <Compile Include="BaseApplication.cs" />
         <Compile Include="DerivedApplication.cs" />
         <Compile Include="Famliy.cs" />
+        <Compile Include="GenericsApplication.cs" />
         <Compile Include="Haoxuan.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SealedApplication.cs" />
