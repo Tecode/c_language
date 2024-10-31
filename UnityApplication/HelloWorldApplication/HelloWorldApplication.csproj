@@ -43,10 +43,13 @@
         <Compile Include="AnonymousFunction.cs" />
         <Compile Include="Application.cs" />
         <Compile Include="BaseApplication.cs" />
+        <Compile Include="Cat.cs" />
+        <Compile Include="CatApplication.cs" />
         <Compile Include="DerivedApplication.cs" />
         <Compile Include="Famliy.cs" />
         <Compile Include="GenericsApplication.cs" />
         <Compile Include="Haoxuan.cs" />
+        <Compile Include="Mouse.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SealedApplication.cs" />
         <Compile Include="SealedFunction.cs" />
