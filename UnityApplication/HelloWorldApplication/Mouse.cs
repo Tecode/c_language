@@ -6,12 +6,13 @@ namespace HelloWorldApplication
     {
         private readonly string _name;
 
-        public Mouse(string name)
+        public Mouse(string name, Cat cat)
         {
             _name = name;
+            cat.CatCome += Moving;
         }
 
-        public void Movving()
+        public void Moving()
         {
             Console.WriteLine("猫来了，{0}快跑！！", _name);
         }
