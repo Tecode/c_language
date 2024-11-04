@@ -49,6 +49,7 @@
         <Compile Include="Famliy.cs" />
         <Compile Include="GenericsApplication.cs" />
         <Compile Include="Haoxuan.cs" />
+        <Compile Include="LinqSearch.cs" />
         <Compile Include="Mouse.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SealedApplication.cs" />
