@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define IS_DEBUG
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,6 +87,7 @@ namespace HelloWorldApplication
             family.SayName();
             family.ReadBook();
             application.RunLog();
+            Family.ConditionalFunc();
         }
     }
 }
