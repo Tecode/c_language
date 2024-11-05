@@ -51,6 +51,7 @@
         <Compile Include="Haoxuan.cs" />
         <Compile Include="LinqSearch.cs" />
         <Compile Include="Mouse.cs" />
+        <Compile Include="MultiThreadedApplication.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SealedApplication.cs" />
         <Compile Include="SealedFunction.cs" />
