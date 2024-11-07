@@ -57,6 +57,8 @@
         <Compile Include="RaceThreaded.cs" />
         <Compile Include="SealedApplication.cs" />
         <Compile Include="SealedFunction.cs" />
+        <Compile Include="SocketClientApplication.cs" />
+        <Compile Include="SocketServeApplication.cs" />
         <Compile Include="TypeApplication.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
