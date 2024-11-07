@@ -24,6 +24,7 @@ namespace HelloWorldApplication
 
         public static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             var array = new[] { 2, 32, 45 };
             var sum = TotalCount(new[] { 1, 2, 4 });
             var total = ArrayParam(1, 2, 3, 4);
@@ -81,8 +82,6 @@ namespace HelloWorldApplication
             func(4);
             
             // 多播委托
-            
-
             family.Say();
             family.SayName();
             family.ReadBook();
