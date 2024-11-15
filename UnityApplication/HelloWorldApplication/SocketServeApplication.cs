@@ -10,18 +10,19 @@ namespace HelloWorldApplication
         public static void Run()
         {
             var serve = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            // 绑定IP和端口
             serve.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9091));
-            var data = new byte[1024];
-            serve.Accept();
+            // 最大链接数
             serve.Listen(100);
-            while (true)
-            {
-                
-            }
-            Console.WriteLine("服务端开启接收");
-            var receiveLength = serve.Receive(data);
-            var text = Encoding.UTF8.GetString(data, 0, receiveLength);
-            Console.WriteLine(text);
+            // 开启服务端接收
+            var serveAccept = serve.Accept();
+            var text = "Hello, Welcome Connect To Server!";
+            // 发送数据
+            serveAccept.Send(Encoding.UTF8.GetBytes(text));
+            // 接收数据
+            var receiveData = new byte[1024];
+            var length = serveAccept.Receive(receiveData);
+            Console.WriteLine(Encoding.UTF8.GetString(receiveData, 0, length));
             Console.ReadKey();
         }
     }
