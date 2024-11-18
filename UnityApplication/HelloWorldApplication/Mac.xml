@@ -55,6 +55,7 @@
         <Compile Include="MultiThreadedApplication.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="RaceThreaded.cs" />
+        <Compile Include="ReadXmlApplication.cs" />
         <Compile Include="SealedApplication.cs" />
         <Compile Include="SealedFunction.cs" />
         <Compile Include="SocketClientApplication.cs" />
