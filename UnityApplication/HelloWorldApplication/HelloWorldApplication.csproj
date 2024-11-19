@@ -51,6 +51,7 @@
         <Compile Include="Haoxuan.cs" />
         <Compile Include="ILinearTable.cs" />
         <Compile Include="LinearTableApplication.cs" />
+        <Compile Include="LinkNode.cs" />
         <Compile Include="LinqSearch.cs" />
         <Compile Include="Mouse.cs" />
         <Compile Include="MultiTaskApplication.cs" />
@@ -60,6 +61,7 @@
         <Compile Include="ReadXmlApplication.cs" />
         <Compile Include="SealedApplication.cs" />
         <Compile Include="SealedFunction.cs" />
+        <Compile Include="SingleLinkedList.cs" />
         <Compile Include="SocketClientApplication.cs" />
         <Compile Include="SocketServeApplication.cs" />
         <Compile Include="TypeApplication.cs" />
