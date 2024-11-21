@@ -11,8 +11,6 @@ namespace HelloWorldApplication
         // 元素个数
         private int _count;
 
-        public T[] List => _elements.Where(value => value != null).ToArray();
-
         public LinearTable(int size)
         {
             _elements = new T[size];
@@ -87,20 +85,21 @@ namespace HelloWorldApplication
             _count++;
         }
 
-        public void RemoveAt(int index)
+        public T RemoveAt(int index)
         {
+            var data = default(T);
             if (index < 0 || index > _elements.Length || _count <= index)
             {
                 Console.WriteLine("Index is out of range");
-                return;
+                return data;
             }
-
+            data = _elements[index];
             for (var value = index + 1; value < _count; value++)
             {
                 _elements[value - 1] = _elements[value];
             }
-
             _count--;
+            return data;
         }
 
         public void Add(T element)

@@ -9,7 +9,8 @@ namespace HelloWorldApplication
         T GetElement(int index);
         int LocalIndexOf(T element);
         void Insert(int index, T element);
-        void RemoveAt(int index);
+        T RemoveAt(int index);
         void Add(T element);
+        
     }
 }
