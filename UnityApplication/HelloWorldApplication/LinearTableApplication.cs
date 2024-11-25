@@ -6,10 +6,10 @@ namespace HelloWorldApplication
     {
         public static void Run()
         {
-            // 使用数组实现List
+            // 使用数组实现线性表
             // var app = new LinearTable<string>();
 
-            // 使用单链表实现List
+            // 使用单链表实现线性表
             var app = new SingleLinkedList<string>();
             app.Add("one");
             app.Add("two");

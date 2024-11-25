@@ -1,6 +1,6 @@
 using System;
-using System.Linq;
 
+// 线性表
 namespace HelloWorldApplication
 {
     public class LinearTable<T> : ILinearTable<T>

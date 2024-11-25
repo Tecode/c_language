@@ -64,6 +64,7 @@
         <Compile Include="SingleLinkedList.cs" />
         <Compile Include="SocketClientApplication.cs" />
         <Compile Include="SocketServeApplication.cs" />
+        <Compile Include="StackQueueApplication.cs" />
         <Compile Include="TypeApplication.cs" />
         <Compile Include="LinearTable.cs" />
     </ItemGroup>
