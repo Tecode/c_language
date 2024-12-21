@@ -2,7 +2,7 @@
 
 ### [解决一直卡住问题](https://github.com/platformio/platform-intel_mcs51/issues/47)
 
-如果还是没有解决这个问题使用STC-isp下载
+#### 如果还是没有解决这个问题使用STC-isp下载
 
 ```shell
 Building in release mode
@@ -18,7 +18,7 @@ Uploading .pio\build\STC89C52RC\firmware.hex
 Cycling power: done
 ```
 
-打开`/.platformio/platforms/intel_mcs51/builder/main.py`文件，找到以下代码修改参数
+#### 打开`/.platformio/platforms/intel_mcs51/builder/main.py`文件，找到以下代码修改参数
 
 ```python
 if upload_protocol == "stcgal":
