@@ -24,7 +24,7 @@ unsigned char *numberToBitList(unsigned char number) {
 int main() {
 // C语言字符串
     char str[] = "List String";
-    printf("%s \n", str[0]);
+    printf("%c \n", str[0]);
     printf("%X \n", (unsigned char) ~0xF0);
     printf("Size of int: %zu bytes\n", sizeof(int));
     printf("Size of char: %zu bytes\n", sizeof(char));
