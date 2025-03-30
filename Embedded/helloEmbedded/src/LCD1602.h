@@ -1,7 +1,7 @@
 #ifndef HELLOEMBEDDED_LCD1602_H
 #define HELLOEMBEDDED_LCD1602_H
 
-//用户调用函数：
+// 用户调用函数：
 void LCD_Init();
 
 void LCD_ShowChar(unsigned char Line, unsigned char Column, char Char);

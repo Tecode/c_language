@@ -1,6 +1,3 @@
-//
-// Created by Administrator on 2024/12/21.
-//
-int main() {
+int main(void) {
     return 0;
 }
